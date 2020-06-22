@@ -1,19 +1,8 @@
--- phpMyAdmin SQL Dump
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `kitos`
 --
-CREATE DATABASE kitos;
-USE kitos;
+CREATE DATABASE `kitos` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `kitos`;
 
 
 -- CREATE USER
@@ -29,26 +18,38 @@ FLUSH PRIVILEGES;
 --
 
 CREATE TABLE `cached_data` (
-  `id` int(11) NOT NULL,
-  `kitosID` text COLLATE utf8_danish_ci NOT NULL,
-  `UUID` text COLLATE utf8_danish_ci NOT NULL,
-  `SupplierName` text COLLATE utf8_danish_ci,
-  `Name` text COLLATE utf8_danish_ci NOT NULL,
-  `LocalName` text COLLATE utf8_danish_ci,
-  `Description` text COLLATE utf8_danish_ci,
-  `Url` text COLLATE utf8_danish_ci,
-  `KleName` text COLLATE utf8_danish_ci,
-  `Note` text COLLATE utf8_danish_ci,
-  `BusinessType` text COLLATE utf8_danish_ci,
-  `SystemOwner_name` text COLLATE utf8_danish_ci,
-  `SystemOwner_email` text COLLATE utf8_danish_ci,
-  `OperationalResponsible_name` text COLLATE utf8_danish_ci NOT NULL,
-  `OperationalResponsible_email` text COLLATE utf8_danish_ci NOT NULL,
-  `ContactPerson_name` text COLLATE utf8_danish_ci,
-  `ContactPerson_email` text COLLATE utf8_danish_ci,
-  `ResponsibleOrganizationalUnit` text COLLATE utf8_danish_ci,
-  `TimeOfImport` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+  `id` int NOT NULL AUTO_INCREMENT,
+  `kitosID` text CHARACTER SET utf8 COLLATE utf8_danish_ci NOT NULL,
+  `UUID` text CHARACTER SET utf8 COLLATE utf8_danish_ci NOT NULL,
+  `SupplierName` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `Name` text CHARACTER SET utf8 COLLATE utf8_danish_ci NOT NULL,
+  `LocalName` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `Description` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `Url` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `KleName` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `Note` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `BusinessType` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `SystemOwner_name` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `SystemOwner_email` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `OperationalResponsible_name` text CHARACTER SET utf8 COLLATE utf8_danish_ci NOT NULL,
+  `OperationalResponsible_email` text CHARACTER SET utf8 COLLATE utf8_danish_ci NOT NULL,
+  `ContactPerson_name` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `ContactPerson_email` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `ResponsibleOrganizationalUnit` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `TestResponsible_name` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `TestResponsible_email` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `DataLevel` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `DataHandlerAgreement` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `BusinessCritical` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `NoteUsage` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `UsedBy` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `DataHandlerSupplierCvr` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `DataHandlerSupplierName` text CHARACTER SET utf8 COLLATE utf8_danish_ci,
+  `TimeOfImport` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY `id` (`id`),
+  FULLTEXT KEY `Name` (`Name`,`Description`),
+  FULLTEXT KEY `Name_2` (`Name`,`LocalName`,`SupplierName`,`Description`,`KleName`,`BusinessType`,`SystemOwner_name`,`SystemOwner_email`,`ContactPerson_name`,`ContactPerson_email`,`ResponsibleOrganizationalUnit`)
+) ENGINE=InnoDB AUTO_INCREMENT=413 DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 
 -- --------------------------------------------------------
 
@@ -57,44 +58,9 @@ CREATE TABLE `cached_data` (
 --
 
 CREATE TABLE `usagelog` (
-  `id` int(11) NOT NULL,
-  `d1UserName` text COLLATE utf8_danish_ci NOT NULL,
-  `searchString` text COLLATE utf8_danish_ci NOT NULL,
-  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
-
---
--- Begrænsninger for dumpede tabeller
---
-
---
--- Indeks for tabel `cached_data`
---
-ALTER TABLE `cached_data`
-  ADD UNIQUE KEY `id` (`id`);
-ALTER TABLE `cached_data` ADD FULLTEXT KEY `Name` (`Name`,`Description`);
-ALTER TABLE `cached_data` ADD FULLTEXT KEY `Name_2` (`Name`,`LocalName`,`SupplierName`,`Description`,`KleName`,`BusinessType`,`SystemOwner_name`,`SystemOwner_email`,`ContactPerson_name`,`ContactPerson_email`,`ResponsibleOrganizationalUnit`);
-
---
--- Indeks for tabel `usagelog`
---
-ALTER TABLE `usagelog`
-  ADD PRIMARY KEY (`id`);
-
---
--- Brug ikke AUTO_INCREMENT for slettede tabeller
---
-
---
--- Tilføj AUTO_INCREMENT i tabel `cached_data`
---
-ALTER TABLE `cached_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
---
--- Tilføj AUTO_INCREMENT i tabel `usagelog`
---
-ALTER TABLE `usagelog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1996;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+  `id` int NOT NULL AUTO_INCREMENT,
+  `d1UserName` text CHARACTER SET utf8 COLLATE utf8_danish_ci NOT NULL,
+  `searchString` text CHARACTER SET utf8 COLLATE utf8_danish_ci NOT NULL,
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2102 DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
