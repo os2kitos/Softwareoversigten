@@ -1,7 +1,35 @@
+version: '3.7'
+
 services:
-  web:
-    build: .
-    ports:
-    - "5000:5000"
-    env_file:
-      - .env-docker
+  webapp:
+     build:
+         context: ./php
+     image: softwareoversigten_webapp:latest
+     #     depends_on:
+     #    - db
+     networks:
+         - frontend
+         - backend
+     ports:
+         - "8084:80"
+     environment:
+         DB_USER: kitos
+         DB_PASSWORD: kitos
+         DB_NAME: kitos
+         DB_HOST: db
+
+  db:
+     image: mysql:8
+     networks:
+         - backend
+     environment:
+         MYSQL_ROOT_PASSWORD: 'rootpassword'
+         #MYSQL_USER: 'kitos_local'
+         # MYSQL_PASSWORD: 'kitos_local'
+         #MYSQL_DATABASE: 'kitos'
+     volumes:
+         - ./mysql/init:/docker-entrypoint-initdb.d
+
+networks:
+  frontend:
+  backend:

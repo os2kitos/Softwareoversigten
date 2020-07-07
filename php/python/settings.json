@@ -1,0 +1,19 @@
+{
+    "KITOS_AUTHURL": "https://kitos.dk/api/Authorize/gettoken",
+    "KITOS_BASEAPIURL": "https://kitos.dk/api",
+    "KITOS_USER": "ANGIV BRUGER MED API ADGANG",
+    "KITOS_PASSWORD": "ANGIV PASSWORD",
+    "KITOS_ODATA_URL": "https://kitos.dk/odata",
+    "KITOS_URL": "https://kitos.dk",
+    "mysql.HOST": "db",
+    "mysql.PORT": "3306",
+    "mysql.USER": "kitos",
+    "mysql.PASSWORD": "kitos",
+    "mysql.DB": "kitos",
+    "mysql.SYSTEMS_TABLE": "cached_data",
+    "mysql.DATALEVEL_TRANSLATION": {
+        "PERSONALDATANDSENSITIVEDATA": "Persondata og følsomme persondata",
+        "PERSONALDATA": "Persondata",
+        "NONE": "Ingen persondata"
+    }
+}

@@ -6,9 +6,9 @@ USE `kitos`;
 
 
 -- CREATE USER
-CREATE USER 'kitos'@'localhost' IDENTIFIED BY 'kitos';
+CREATE USER 'kitos'@'%' IDENTIFIED WITH mysql_native_password BY 'kitos';
 -- GRANT PRIVILEGES ON kitos DATABASE
-GRANT ALL PRIVILEGES ON kitos.* TO 'kitos'@'localhost';
+GRANT ALL PRIVILEGES ON kitos.* TO 'kitos'@'%';
 -- SAVE THE CHANGES;
 FLUSH PRIVILEGES;
 -- --------------------------------------------------------
