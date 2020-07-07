@@ -3,8 +3,8 @@
 Softwareoversigten er en simpel webfrontend til brug sammen med data fra KITOS.
 Projektet består af 3 dele: 
 * Softwareoversigten - frontend applikation lavet i PHP og javascript
-* MySQL database - backend applikatonslag. Indeholder en forsimplet datamodel med data fra KITOS
-* Data importer - en import server, der læser data fra KITOS' REST API og indlæser til MySQL databasen.
+* MySQL database - backend applikationslag. Indeholder en forsimplet datamodel med data fra KITOS
+* Data importer - en import service, der læser data fra KITOS' REST API og indlæser til MySQL databasen.
 
 Forudsætninger
 - 
